@@ -13,14 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->smallInteger('role')->default(1);
-            $table->string('password');
-            $table->rememberToken();
+            $table->unsignedBigInteger('emp_id');
+            $table->string('regno');
+            $table->string('make');
+            $table->string('model');
             $table->timestamps();
+            $table->foreign('emp_id')
+                ->references('id')
+                ->on('employees')
+                ->onDelete('restrict');
         });
     }
 
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('vehicles');
     }
 };
