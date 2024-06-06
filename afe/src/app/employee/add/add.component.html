@@ -1,0 +1,115 @@
+<div class="col-md-6">
+    <div class="d-flex align-items-center justify-content-between p-3 border-bottom tx-16">
+      <div class="d-flex align-items-center">
+        
+      </div>
+      <div>
+        <a class="me-2" type="button" data-bs-toggle="tooltip" data-bs-title="Close"[routerLink]="['/employees']">
+          <mat-icon aria-hidden="false" aria-label="view" fontIcon="close"></mat-icon>
+      </a>
+      </div>
+    </div>
+  </div>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">Add New Employee</h6>
+            <form #empForm="ngForm" (ngSubmit)="saveEmp()" class="forms-sample">
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Name: &nbsp;</span>
+                            <input matInput placeholder="Staff Name" name="name" [(ngModel)]="newEmp.name" required class="form-control">
+                            <mat-error *ngIf="empForm.controls['name']?.touched && empForm.controls['name']?.hasError('required')">
+                                Name is required
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Email: &nbsp;</span>
+                            <input matInput placeholder="Staff Email" name="email" [(ngModel)]="newEmp.email" required class="form-control">
+                            <mat-error *ngIf="empForm.controls['email']?.touched && empForm.controls['email']?.hasError('required')">
+                                Email is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>PF No.: &nbsp;</span>
+                            <input matInput placeholder="PF Number" name="pfno" [(ngModel)]="newEmp.pfno" required class="form-control">
+                            <mat-error *ngIf="empForm.controls['pfno']?.touched && empForm.controls['pfno']?.hasError('required')">
+                                PF Number is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Designation: &nbsp;</span>
+                            <input matInput placeholder="Designation" name="designation" [(ngModel)]="newEmp.designation" required class="form-control">
+                            <mat-error *ngIf="empForm.controls['designation']?.touched && empForm.controls['designation']?.hasError('required')">
+                                Designation is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Department: &nbsp;</span>
+                            <input matInput placeholder="Department" name="department" [(ngModel)]="newEmp.department" required class="form-control">
+                            <mat-error *ngIf="empForm.controls['department']?.touched && empForm.controls['department']?.hasError('required')">
+                                Department is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Directorate: &nbsp;</span>
+                            <input matInput placeholder="Directorate" name="directorate" [(ngModel)]="newEmp.directorate" required class="form-control">
+                            <mat-error *ngIf="empForm.controls['directorate']?.touched && empForm.controls['directorate']?.hasError('required')">
+                                Directorate is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Mobile No.: &nbsp;</span>
+                            <input matInput placeholder="Mobile Number" name="mobile" [(ngModel)]="newEmp.mobile" required maxLength="10" class="form-control">
+                            <mat-error *ngIf="empForm.controls['mobile']?.touched && empForm.controls['mobile']?.hasError('required')">
+                                Mobile Number is required
+                            </mat-error>
+                            <mat-error *ngIf="empForm.controls['mobile']?.touched && empForm.controls['mobile']?.hasError('maxLength')">
+                                Mobile Number must have 10 digits only
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Alt No.: &nbsp;</span>
+                            <input matInput placeholder="Alternative No." name="altno" [(ngModel)]="newEmp.altno" required class="form-control">
+                            <mat-error *ngIf="empForm.controls['altno']?.touched && empForm.controls['altno']?.hasError('required')">
+                                Alternative Number is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary me-2" [disabled]="!empForm.valid">Add</button>
+                <button class="btn btn-secondary" (click)="goBack()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

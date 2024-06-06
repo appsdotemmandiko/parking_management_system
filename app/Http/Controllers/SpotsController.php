@@ -58,7 +58,7 @@ class SpotsController extends Controller
      */
     public function update(Request $request, Spot $parkingspot)
     {
-        $parkingspot->update($request->only(['no', 'status']));
+        $parkingspot->update($request->only(['lot_id', 'no', 'status']));
 
         return new SpotsResource($parkingspot);
     }

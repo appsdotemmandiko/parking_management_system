@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Employee } from './../models/employee';
+import { Component, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -7,35 +10,27 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent {
-  EmpArray : any[] = [];
-  isResultLoaded = false;
+  errMsg !: string | null
 
-  name: string ="";
-  email: string ="";
-  pfno: string ="";
-  designation: string="";
-  department: string="";
-  directorate: string ="";
-  mobile: Number =0;
-  altno: string ="";
- 
-  currentEmpID = "";
+  // employs: Employee[] = [];
+  employs: any = [];
 
-  constructor(private http: HttpClient )
-  {
-    this.getAllEmployees();
- 
-  }
-  getAllEmployees()
-  {
+  constructor(private empService: EmployeeService){
+    this.empService.getEmployees().subscribe((data: any)=>{
+      this.employs = data.data;
+
+      this.ds = new MatTableDataSource(this.employs);
+      this.ds.paginator = this.pages;
+
+    })
     
-    this.http.get("http://127.0.0.1:8000/api/employees")
-  
-    .subscribe((resultData: any)=>
-    {
-        this.isResultLoaded = true;
-        console.log(resultData);
-        this.EmpArray = resultData;
-    });
   }
+  
+  dispCol = [
+    '#', 'Name', 'PF No.', 'Designation', 'Department', 'Action'
+  ]
+
+  ds = new MatTableDataSource(this.employs);
+
+  @ViewChild(MatPaginator) pages!: MatPaginator;
 }

@@ -1,0 +1,56 @@
+<div class="col-m-3">
+    <div class="d-flex align-items-center justify-content-between p-3 border-bottom tx-16">
+      <div class="d-flex align-items-center">
+        
+      </div>
+      <div>
+        <a class="me-2" type="button" data-bs-toggle="tooltip" data-bs-title="Close"[routerLink]="['/parkingspots']">
+          <mat-icon aria-hidden="false" aria-label="view" fontIcon="close"></mat-icon>
+      </a>
+      </div>
+    </div>
+  </div>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">Edit Parking Spot Details</h6>
+            <form [formGroup]="editSpotForm" (ngSubmit)="editSpot()" class="forms-sample">
+                <div class="form-group">
+                    <input type="hidden" formControlName="id" value={{spotId}}>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Parking Lot: &nbsp;</span>
+                            <mat-select class="form-control" formControlName="lot_id" required [value]="lotId">
+                                <mat-option>--</mat-option>
+                                <mat-option *ngFor="let option of options" [value]="option.id">{{option.description}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="editSpotForm.get('lot_id')?.hasError('required')">Parking Lot is required</mat-error>
+                          </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Spot Number: &nbsp;</span>
+                            <input matInput placeholder="Number" formControlName="no" class="form-control">
+                            <mat-error *ngIf="editSpotForm.get('no')?.hasError('required')">Spot No. is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Status: &nbsp;</span>
+                            <input matInput placeholder="Status" formControlName="status" class="form-control">
+                            <mat-error *ngIf="editSpotForm.get('status')?.hasError('required')">Status is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary me-2" [disabled]="!editSpotForm.valid">Update</button>
+                <a [routerLink]="['/parkingspots']"><button class="btn btn-secondary">Cancel</button></a>
+            </form>
+        </div>
+    </div>
+</div>

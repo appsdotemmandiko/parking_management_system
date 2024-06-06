@@ -1,3 +1,29 @@
-<h1 class="text-primary">Hi</h1>
-<app-employee />
-<router-outlet></router-outlet>
+<mat-toolbar class="toolbar_des">
+    
+    <span class="toolbar_title">KUTRRH Parking</span>
+    <span class="header-spacer"></span>
+    <a mat-icon-button class="header-icon home-icon" aria-label="home icon" href="dashboard">
+      <mat-icon>home</mat-icon>
+    </a>
+    <button mat-icon-button class="header-icon" aria-label="menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-icon-button class="person-icon" aria-label="person icon">
+      <mat-icon>person</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-drawer-container class="content-container">
+    <!-- <mat-drawer mode="side" [opened]="sidebarToggleMenu" class="side-des">
+        <h4>Side</h4>
+    </mat-drawer> -->
+    <mat-drawer-content class="main-des">
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+  <!-- partial:partials/_footer.html -->
+  <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
+    <p class="text-muted mb-1 mb-md-0 text-center">Copyright © 2024 KUTRRH.</p>
+  </footer>
+  <!-- partial -->
+

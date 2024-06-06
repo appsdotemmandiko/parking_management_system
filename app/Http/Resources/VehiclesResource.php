@@ -20,17 +20,19 @@ class VehiclesResource extends JsonResource
         return [
             
             'details' => [
-                'Registration Number' => $this->regno,
-                'Make' => $this->make,
-                'Model' => $this->model
+                'id' => $this->id,
+                'emp_id' => $this->emp_id,
+                'regno' => $this->regno,
+                'make' => $this->make,
+                'model' => $this->model
             ],
             'owner' => [
                 'name' => $emp->name,
-                'Designation' => $emp->designation,
-                'Department' => $emp->department,
-                'Directorate' => $emp->directorate,
-                'Mobile Number' => $emp->mobile,
-                'Alternative NUmber' => $emp->altno
+                'designation' => $emp->designation,
+                'department' => $emp->department,
+                'directorate' => $emp->directorate,
+                'mobile' => $emp->mobile,
+                'altno' => $emp->altno
             ]
         ];
     }

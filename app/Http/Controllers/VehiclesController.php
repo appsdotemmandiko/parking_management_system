@@ -60,7 +60,7 @@ class VehiclesController extends Controller
     public function update(Request $request, Vehicle $vehicle)
     {
         $vehicle->update($request->only([
-            'regno','make', 'model'
+            'emp_id', 'regno','make', 'model'
         ]));
 
         return new VehiclesResource($vehicle);

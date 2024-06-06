@@ -1,0 +1,46 @@
+<div class="col-md-6">
+    <div class="d-flex align-items-center justify-content-between p-3 border-bottom tx-16">
+      <div class="d-flex align-items-center">
+        
+      </div>
+      <div>
+        <a class="me-2" type="button" data-bs-toggle="tooltip" data-bs-title="Close"[routerLink]="['/parkinglots']">
+          <mat-icon aria-hidden="false" aria-label="view" fontIcon="close"></mat-icon>
+      </a>
+      </div>
+    </div>
+  </div>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">Add Parking Lot</h6>
+            <form #lotForm="ngForm" (ngSubmit)="saveLot()" class="forms-sample">
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Parking Lot: &nbsp;</span>
+                            <input matInput placeholder="Parking Lot" name="description" [(ngModel)]="newLot.description" required class="form-control">
+                            <mat-error *ngIf="lotForm.controls['description']?.touched && lotForm.controls['description']?.hasError('required')">
+                                Parking Lot is required
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>No. of Spots: &nbsp;</span>
+                            <input matInput placeholder="No. of Spots" name="totalspots" [(ngModel)]="newLot.totalspots" required class="form-control">
+                            <mat-error *ngIf="lotForm.controls['totalspots']?.touched && lotForm.controls['totalspots']?.hasError('required')">
+                                Number of Spots is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary me-2" [disabled]="!lotForm.valid">Add</button>
+                <button class="btn btn-secondary" (click)="goBack()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

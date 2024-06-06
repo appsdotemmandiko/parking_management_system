@@ -18,9 +18,11 @@ class SpotsResource extends JsonResource
         $lot = Lot::find($this->lot_id);
 
         return [
-            'Spot Number' => $this->no,
-            'Location' => $lot->description,
-            'Status' => $this->status
+            'id' => $this->id,
+            'no' => $this->no,
+            'lot_id' => $this->lot_id,
+            'lotname' => $lot->description,
+            'status' => $this->status
         ];
     }
 }

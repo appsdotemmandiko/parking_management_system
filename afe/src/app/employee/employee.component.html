@@ -1,78 +1,66 @@
-<div class="container mt-4" >
- 
-    <div class="card">
-            <h1>Add KUTRRH Employees</h1>
-     
-    <form>
-      <!-- [(ngModel)]="email" [ngModelOptions]="{standalone: true}" -->
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Employee Name">
-        </div>
-     
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" id="email" placeholder="Email address"/>
-          </div>
-     
-          <div class="form-group">
-            <label>PF No.</label>
-            <input type="text" class="form-control" id="pfno" placeholder="PF No."/>
-          </div>
-
-          <div class="form-group">
-            <label>Designation</label>
-            <input type="text" class="form-control" id="designation" placeholder="Designation"/>
-          </div>
-
-          <div class="form-group">
-            <label>Department</label>
-            <input type="text" class="form-control" id="department" placeholder="Department"/>
-          </div>
-
-          <div class="form-group">
-            <label>Directorate</label>
-            <input type="text" class="form-control" id="directorate" placeholder="Directorate"/>
-          </div>
-
-          <div class="form-group">
-            <label>Mobile Number</label>
-            <input type="text" class="form-control" id="mobile" placeholder="Mobile"/>
-          </div>
-
-          <div class="form-group">
-            <label>Alternative Number or Office Extension Number</label>
-            <input type="text" class="form-control" id="altno" placeholder="Alt No. or Ext"/>
-          </div>
-        
-        <button type="submit" class="btn btn-primary mt-4" >Submit</button>
-      </form>
+<mat-card class="card-contain">
+    <div class="col-m-3">
+        <div class="d-flex align-items-center justify-content-between p-3 border-bottom tx-16">
+    <div class="col-md-4 grid-margin stretch-card"> 
+    <mat-card-header>
+        <mat-card-title>Employees</mat-card-title>
+    </mat-card-header>
     </div>
     <div>
-     
-     
-        <div class="container mt-4" >
-     
-            <h1>KUTRRH Employees</h1>
-     
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">PF No.</th>
-                        <th scope="col">Designation</th>
-                        <th scope="col">Department</th>
-                        <th scope="col">Directorate</th>
-                        <th scope="col">Mobile</th>
-                        <th scope="col">Alt No.</th>
-                    </tr>
-                </thead>
-                <tbody>
-              
-                </tbody>
-            </table>
-     
-     
+        <a class="me-2" type="button" data-bs-toggle="tooltip" data-bs-title="Close"[routerLink]="['/dashboard']">
+          <mat-icon aria-hidden="false" aria-label="view" fontIcon="close"></mat-icon>
+      </a>
+      </div>
+    </div>
+</div>
+    <mat-card-content>
+        <div class="p-3">
+            <a class="btn btn-outline-primary" href="employees/add" role="button">Add New</a>
         </div>
+        <table mat-table [dataSource]="ds">
+            <ng-container matColumnDef="#">
+                <th mat-header-cell *matHeaderCellDef>#</th>
+                <td mat-cell *matCellDef="let element">
+                    <input type="hidden" id="id" value={{element.id}}>
+                    {{element.id}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.name}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="PF No.">
+                <th mat-header-cell *matHeaderCellDef>PF No.</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.pfno}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Designation">
+                <th mat-header-cell *matHeaderCellDef>Designation</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.designation}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Department">
+                <th mat-header-cell *matHeaderCellDef>Department</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.department}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef>View</th>
+                <td mat-cell *matCellDef="let element">
+                    <a [routerLink]="['view', element.id]">
+                        <mat-icon aria-hidden="false" aria-label="view" fontIcon="visibility"></mat-icon>
+                    </a>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="dispCol"></tr>
+            <tr mat-row *matRowDef="let row; columns: dispCol"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons>
+        </mat-paginator>
+    </mat-card-content>
+</mat-card>

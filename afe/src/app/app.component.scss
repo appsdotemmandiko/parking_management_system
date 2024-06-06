@@ -1,0 +1,45 @@
+.header-spacer {
+    flex: 1 1 auto;
+}
+
+.toolbar_des {
+    background-color: #27378e;
+    color: azure;
+    .toolbar_title {
+        padding-left: 20px;
+    }
+}
+
+.side-des {
+    background-color: #f5f5f5;
+    height:100%;
+    width:250px;
+}
+
+.main-des {
+    height:100%;
+    border:1px solid #ddd;
+    min-height: 100vh;
+}
+
+.card-contain {
+    margin: 20px;
+}
+
+.count-card {
+    width:24%;
+    margin:5px;
+    padding:20px;
+}
+.bg-success {
+    background-color: lightgreen;
+}
+.bg-warning {
+    background-color: lightcoral;
+}
+.bg-info {
+    background-color: lightblue;
+}
+.bg-primary {
+    background-color: lightyellow;
+}

@@ -16,9 +16,9 @@ class RolesResource extends JsonResource
     {
 
         return [
-            'Name' => $this->name,
-            'Email' => $this->email,
-            'Role' => $this->role
+            'name' => $this->name,
+            'email' => $this->email,
+            'role' => $this->role
         ];
     }
 }

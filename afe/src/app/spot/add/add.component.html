@@ -1,0 +1,61 @@
+<div class="col-md-6">
+    <div class="d-flex align-items-center justify-content-between p-3 border-bottom tx-16">
+      <div class="d-flex align-items-center">
+        
+      </div>
+      <div>
+        <a class="me-2" type="button" data-bs-toggle="tooltip" data-bs-title="Close"[routerLink]="['/parkingspots']">
+          <mat-icon aria-hidden="false" aria-label="view" fontIcon="close"></mat-icon>
+      </a>
+      </div>
+    </div>
+  </div>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">Add Parking Spot</h6>
+            <form #spotForm="ngForm" (ngSubmit)="saveSpot()" class="forms-sample">
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Parking Lot: &nbsp;</span>
+                            <!-- <input matInput placeholder="Parking Lot" name="lot_id" [(ngModel)]="" required class="form-control"> -->
+                            <mat-select name="emp_id" [(ngModel)]="newSpot.lot_id" required class="form-control">
+                                <mat-option>--</mat-option>
+                                <mat-option *ngFor="let option of options" value="{{option.id}}">{{option.description}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="spotForm.controls['lot_id']?.touched && spotForm.controls['lot_id']?.hasError('required')">
+                                Parking Lot is required
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Spot Number: &nbsp;</span>
+                            <input matInput placeholder="Spot Number" name="no" [(ngModel)]="newSpot.no" required class="form-control">
+                            <mat-error *ngIf="spotForm.controls['no']?.touched && spotForm.controls['no']?.hasError('required')">
+                                Spot Number is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Status: &nbsp;</span>
+                            <input matInput placeholder="Status" name="status" [(ngModel)]="newSpot.status" required class="form-control">
+                            <mat-error *ngIf="spotForm.controls['status']?.touched && spotForm.controls['status']?.hasError('required')">
+                                Status is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary me-2" [disabled]="!spotForm.valid">Add</button>
+                <button class="btn btn-secondary" (click)="goBack()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="col-m-3">
+    <div class="d-flex align-items-center justify-content-between p-3 border-bottom tx-16">
+      <div class="d-flex align-items-center">
+        
+      </div>
+      <div>
+        <a class="me-2" type="button" data-bs-toggle="tooltip" data-bs-title="Close"[routerLink]="['/vehicles']">
+          <mat-icon aria-hidden="false" aria-label="view" fontIcon="close"></mat-icon>
+      </a>
+      </div>
+    </div>
+  </div>
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">Edit Vehicle Details</h6>
+            <form [formGroup]="editCarForm" (ngSubmit)="editCar()" class="forms-sample">
+                <div class="form-group">
+                    <input type="hidden" formControlName="id" value={{carId}}>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Owner: &nbsp;</span>
+                            <mat-select #emp class="form-control" formControlName="emp_id" required [value]="actv">
+                                <mat-option>--</mat-option>
+                                <mat-option *ngFor="let option of options" [value]="option.id">{{option.name}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="editCarForm.get('emp_id')?.hasError('required')">Name is required</mat-error>
+                          </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Reg No.: &nbsp;</span>
+                            <input matInput placeholder="Reg No." formControlName="regno" class="form-control">
+                            <mat-error *ngIf="editCarForm.get('regno')?.hasError('required')">Reg No. is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Make: &nbsp;</span>
+                            <input matInput placeholder="Make" formControlName="make" class="form-control">
+                            <mat-error *ngIf="editCarForm.get('make')?.hasError('required')">Make of car is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row col-sm-9">
+                        <mat-form-field>
+                            <span matTextPrefix>Model: &nbsp;</span>
+                            <input matInput placeholder="Model" formControlName="model" class="form-control">
+                            <mat-error *ngIf="editCarForm.get('model')?.hasError('required')">Car model is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    
+                </div>
+                <button type="submit" class="btn btn-primary me-2" [disabled]="!editCarForm.valid">Update</button>
+                <a [routerLink]="['/vehicles']"><button class="btn btn-secondary">Cancel</button></a>
+            </form>
+        </div>
+    </div>
+</div>

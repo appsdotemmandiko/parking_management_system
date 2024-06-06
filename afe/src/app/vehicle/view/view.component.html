@@ -1,0 +1,65 @@
+<ng-container class="mat-card" *ngIf="carDeets">
+  <div class="col-lg-12">
+    <div class="d-flex align-items-center justify-content-between p-3 border-bottom tx-16">
+      <div class="d-flex align-items-center">
+        
+      </div>
+      <div>
+        <a class="me-2" type="button" data-bs-toggle="tooltip" data-bs-title="Close"[routerLink]="['/vehicles']">
+          <mat-icon aria-hidden="false" aria-label="view" fontIcon="close"></mat-icon>
+      </a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="row">
+    <div class="col-lg-7 col-xl-8 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-baseline mb-2">
+            <h6 class="card-title mb-0">Vehicle Details</h6>
+          </div>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title-group>
+                <mat-card-title>{{carDeets.details.regno }}</mat-card-title>
+                <mat-card-subtitle>{{ carDeets.details.make }} | {{ carDeets.details.model }}</mat-card-subtitle>
+              </mat-card-title-group>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Owner Details:</p>
+              <div class="card col-12 col-md-6 col-xl-4">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Name: </strong>{{carDeets.owner.name }}</li>
+                  <li class="list-group-item"><strong>Designation: </strong>{{carDeets.owner.designation }}</li>
+                  <li class="list-group-item"><strong>Department: </strong>{{carDeets.owner.department }}</li>
+                  <li class="list-group-item"><strong>Directorate: </strong>{{carDeets.owner.directorate }}</li>
+                  <li class="list-group-item"><strong>Mobile No.: </strong>{{carDeets.owner.mobile }}</li>
+                  <li class="list-group-item"><strong>Alt No.: </strong>{{carDeets.owner.altno }} </li>
+                </ul>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div> 
+      </div>
+    </div>
+    <div class="col-lg-5 col-xl-4 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-baseline">
+            <h6 class="card-title mb-0">QR Code</h6>
+          </div>
+          <div class="">
+            <qrcode (qrCodeURL)="onCodeChange($event)" [qrdata]="qrcodedata" [width]="350" [errorCorrectionLevel]="'Q'" elementType="svg"></qrcode>
+          </div>
+          <div class="d-grid">
+            <a [href]="qrUrl" download="{{carDeets.details.regno }}"><button type="button" class="btn btn-inverse-primary">Download</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- row -->
+</ng-container>

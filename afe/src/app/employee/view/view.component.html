@@ -1,0 +1,37 @@
+<ng-container class="mat-card" *ngIf="empDeets">
+    <mat-card>
+      <div class="col-m-3">
+        <div class="d-flex align-items-center justify-content-between p-3 border-bottom tx-16">
+          <div class="d-flex align-items-center">
+            <mat-card-header>
+              <mat-card-title-group>
+                <mat-card-title>{{empDeets.name }}</mat-card-title>
+                <mat-card-subtitle>{{ empDeets.designation }}</mat-card-subtitle>
+              </mat-card-title-group>
+            </mat-card-header>
+          </div>
+          <div>
+            <a class="me-2" type="button" data-bs-toggle="tooltip" data-bs-title="Close"[routerLink]="['/employees']">
+              <mat-icon aria-hidden="false" aria-label="view" fontIcon="close"></mat-icon>
+          </a>
+          </div>
+        </div>
+      </div>
+        <mat-card-content>
+             <div class="card col-12 col-md-6 col-xl-4">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Email: </strong> {{empDeets.email }}</li>
+                <li class="list-group-item"><strong>PF No.: </strong>{{empDeets.pfno }}</li>
+                <li class="list-group-item"><strong>Department: </strong>{{empDeets.department }}</li>
+                <li class="list-group-item"><strong>Directorate: </strong>{{empDeets.directorate }}</li>
+                <li class="list-group-item"><strong>Mobile No.: </strong>{{empDeets.mobile }}</li>
+                <li class="list-group-item"><strong>Alt No.: </strong>{{empDeets.altno }}</li>
+              </ul>
+            </div>
+        </mat-card-content>
+      </mat-card>
+      <div>
+        <a [routerLink]="['/employees/edit', empId]"><button type="button" class="btn btn-inverse-primary">Edit</button></a>
+        <button type="button" class="btn btn-inverse-primary" (click)="goBack()">Back</button>
+      </div>
+</ng-container>

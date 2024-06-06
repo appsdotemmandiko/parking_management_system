@@ -15,21 +15,19 @@ class EmployeesResource extends JsonResource
      */
     public function toArray($request)
     {
-        // $user = Employee::find($this->user_id);
         $user = Employee::find($this->id);
         
         return [
             
-            'details' => [
-                'Name' => $this->name,
-                'Email' => $this->email,
-                'PF No.' => $this->pfno,
-                'Designation' => $this->designation,
-                'Department' => $this->department,
-                'Directorate' => $this->directorate,
-                'Mobile Number' => $this->mobile,
-                'Alternative NUmber' => $this->altno
-           ]
+                'id' => $this->id,
+                'name' => $this->name,
+                'email' => $this->email,
+                'pfno' => $this->pfno,
+                'designation' => $this->designation,
+                'department' => $this->department,
+                'directorate' => $this->directorate,
+                'mobile' => $this->mobile,
+                'altno' => $this->altno
         ];
     }
 }

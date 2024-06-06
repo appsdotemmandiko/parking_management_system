@@ -1,0 +1,89 @@
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-title">Edit Employee</h6>
+        <form [formGroup]="editEmpForm" (ngSubmit)="editEmp()">
+            <div class="form-group">
+                <input type="hidden" formControlName="id" value={{empId}}>
+            </div>
+            <div class="form-group">
+                <div class="row col-sm-9">
+                    <mat-form-field>
+                        <span matTextPrefix>Name: &nbsp;</span>
+                        <input matInput placeholder="Employee Name" formControlName="name">
+                        <mat-error *ngIf="editEmpForm.get('name')?.hasError('required')">Name is required</mat-error>
+                    </mat-form-field>
+                </div>   
+            </div>
+            <div class="form-group">
+                <div class="row col-sm-9">
+                    <mat-form-field>
+                        <span matTextPrefix>Email: &nbsp;</span>
+                        <input matInput placeholder="Email" formControlName="email">
+                        <mat-error *ngIf="editEmpForm.get('email')?.hasError('required')">Email is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row col-sm-9">
+                    <mat-form-field>
+                        <span matTextPrefix>PF No.: &nbsp;</span>
+                        <input matInput placeholder="PF Number" formControlName="pfno">
+                        <mat-error *ngIf="editEmpForm.get('pfno')?.hasError('required')">PF Number is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row col-sm-9">
+                    <mat-form-field>
+                        <span matTextPrefix>Designation: &nbsp;</span>
+                        <input matInput placeholder="Desisgnation" formControlName="designation">
+                        <mat-error *ngIf="editEmpForm.get('designation')?.hasError('required')">Designation is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row col-sm-9">
+                <mat-form-field>
+                    <span matTextPrefix>Department: &nbsp;</span>
+                    <input matInput placeholder="Department" formControlName="department">
+                    <mat-error *ngIf="editEmpForm.get('department')?.hasError('required')">Department is required</mat-error>
+                </mat-form-field>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row col-sm-9">
+                    <mat-form-field>
+                        <span matTextPrefix>Directorate: &nbsp;</span>
+                        <input matInput placeholder="Directorate" formControlName="directorate">
+                        <mat-error *ngIf="editEmpForm.get('directorate')?.hasError('required')">Directorate is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row col-sm-9">
+                    <mat-form-field>
+                        <span matTextPrefix>Mobile No.: &nbsp;</span>
+                        <input matInput placeholder="Mobile" formControlName="mobile">
+                        <mat-error *ngIf="editEmpForm.get('mobile')?.hasError('required')">Mobile is required</mat-error>
+                        <mat-error *ngIf="editEmpForm.get('mobile')?.hasError('maxLength')">Max of 10 digits</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row col-sm-9">
+                    <mat-form-field>
+                        <span matTextPrefix>Alt No.: &nbsp;</span>
+                        <input matInput placeholder="Alt No." formControlName="altno">
+                        <mat-error *ngIf="editEmpForm.get('altno')?.hasError('required')">Alt is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary me-2" [disabled]="!editEmpForm.valid">
+                    Update
+                </button>
+                <a [routerLink]="['/employees']"><button class="btn btn-secondary">Cancel</button></a>
+            </div>
+        </form>
+    </div>
